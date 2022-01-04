@@ -1,0 +1,58 @@
+{
+  "collectionName": "components_page_highlights",
+  "info": {
+    "name": "highlight",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text",
+      "required": true
+    },
+    "background": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "float_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "buttonLabel": {
+      "type": "string",
+      "required": true,
+      "default": "Buy Now"
+    },
+    "buttonLink": {
+      "type": "string",
+      "required": true,
+      "default": "http://localhost:1337/games"
+    },
+    "alignment": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "left"
+      ],
+      "default": "right",
+      "required": false
+    }
+  }
+}
