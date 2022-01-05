@@ -11,11 +11,9 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "jsdom": "^18.0.1",
     "knex": "0.21.18",
-    "pg": "8.5.1",
+    "pg": "^8.7.1",
     "pg-connection-string": "^2.5.0",
-    "slugify": "^1.6.2",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
     "strapi-connector-bookshelf": "3.6.8",
@@ -23,11 +21,11 @@
     "strapi-plugin-content-manager": "3.6.8",
     "strapi-plugin-content-type-builder": "3.6.8",
     "strapi-plugin-email": "3.6.8",
-    "strapi-plugin-entity-relationship-chart": "https://github.com/willianjusten/strapi-plugin-entity-relationship-chart",
     "strapi-plugin-graphql": "3.6.8",
     "strapi-plugin-i18n": "3.6.8",
     "strapi-plugin-upload": "3.6.8",
     "strapi-plugin-users-permissions": "3.6.8",
+    "strapi-provider-upload-cloudinary": "^3.6.8",
     "strapi-utils": "3.6.8"
   },
   "author": {
