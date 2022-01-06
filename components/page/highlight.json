@@ -43,7 +43,7 @@
     "buttonLink": {
       "type": "string",
       "required": true,
-      "default": "http://localhost:1337/games"
+      "default": "http://localhost:3000/games"
     },
     "alignment": {
       "type": "enumeration",
