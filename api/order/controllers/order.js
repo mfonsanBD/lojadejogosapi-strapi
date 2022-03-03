@@ -38,7 +38,7 @@ module.exports = {
 
     try {
       const paymentIntent = await stripe.paymentIntents.create({
-        amount: total*100,
+        amount: Math.round(total * 100),
         currency: 'usd',
         automatic_payment_methods: {enabled: true},
         metadata: { integration_check: "accept_a_payment" }
