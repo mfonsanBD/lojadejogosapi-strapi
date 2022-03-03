@@ -1,7 +1,7 @@
 'use strict';
 
 const { sanitizeEntity } = require('strapi-utils/lib');
-
+const orderTemplete = require('../../../config/email-templates/order');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = {
@@ -92,6 +92,24 @@ module.exports = {
     const entity = await strapi.services.order.create(entry);
 
     //enviar e-mail para o usuario
+    await strapi.plugins["email-designer"].services.email.sendTemplatedEmail(
+      {
+        to: userInfo.email,
+        from: 'no-reply@wongames.com'
+      },
+      {
+        templateId: 1,
+      },
+      {
+        user: userInfo,
+        payment: {
+          total: `$ ${(total_in_cents / 100).toFixed(2)}`,
+          card_brand: entry.card_brand,
+          card_last4: entry.card_last4
+        },
+        games
+      }
+    );
 
     //retorna que foi salvo no banco
     return sanitizeEntity(entity, { model: strapi.models.order });
