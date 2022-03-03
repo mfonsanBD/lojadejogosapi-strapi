@@ -68,15 +68,25 @@ module.exports = {
     // pegar o total dos jogos (saber se é free ou não)
     const total_in_cents = await strapi.config.functions.cart.total(games);
 
-    //salvar no banco de dados
     //pegar do frontend os valores do paymentMethos
+    let paymentInfo;
+    if (total_in_cents !== 0) {
+      try {
+        paymentInfo = await stripe.paymentMethods.retrieve(paymentMethod);
+      } catch (err) {
+        ctx.response.status = 402;
+        return { error: err.message };
+      }
+    }
+
+    //salvar no banco de dados
     const entry = {
       total_in_cents,
       payment_intent_id: paymentIntentId,
-      cart_brand: null,
-      cart_last4: null,
+      card_brand: paymentInfo?.card?.brand,
+      card_last4: paymentInfo?.card?.last4,
+      user: userInfo,
       games,
-      user: userInfo
     };
 
     const entity = await strapi.services.order.create(entry);
